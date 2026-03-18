@@ -1,0 +1,45 @@
+backend:
+  name: github
+  repo: osvaldoprimo/estancia-el-piquillin
+  branch: main
+
+media_folder: imagenes
+public_folder: imagenes
+
+locale: es
+
+collections:
+  - name: pagina
+    label: "Contenido de la página"
+    files:
+
+      - name: nosotros
+        label: "Quiénes somos"
+        file: _data/nosotros.json
+        fields:
+          - { label: "Título", name: titulo, widget: string }
+          - { label: "Párrafo 1", name: parrafo1, widget: text }
+          - { label: "Párrafo 2", name: parrafo2, widget: text }
+          - { label: "Frase destacada", name: frase, widget: string }
+
+      - name: contacto
+        label: "Datos de contacto"
+        file: _data/contacto.json
+        fields:
+          - { label: "Teléfono / WhatsApp", name: telefono, widget: string }
+          - { label: "Dirección", name: direccion, widget: string }
+
+  - name: quesos
+    label: "Quesos"
+    folder: _data/quesos
+    create: true
+    slug: "{{nombre}}"
+    fields:
+      - { label: "Nombre", name: nombre, widget: string }
+      - { label: "Tipo (ej: Blando · Fresco)", name: tipo, widget: string }
+      - { label: "Descripción", name: descripcion, widget: text }
+      - { label: "Foto", name: foto, widget: image }
+      - label: "Características"
+        name: pills
+        widget: list
+        field: { label: "Característica", name: pill, widget: string }
